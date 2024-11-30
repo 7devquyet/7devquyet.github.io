@@ -33,7 +33,10 @@
             text-align: center;
             transition: background 0.5s, color 0.5s;
             background: var(--bg-color-light);
+            background: url('./image/xmas.jpg') no-repeat center center/cover;
             color: var(--text-color-light);
+            overflow: hidden;
+            position: relative;
         }
 
         .container {
@@ -42,7 +45,7 @@
             padding: 20px;
             border-radius: 15px;
             transition: border 0.3s;
-            border: 2px solid var(--border-color-light); /* Default light mode border */
+            border: 2px solid var(--border-color-light);
         }
 
         .avatar {
@@ -65,7 +68,7 @@
             padding: 10px;
             border-radius: 5px;
             transition: background 0.3s, border 0.3s;
-            border: 2px solid var(--border-color-light); /* Default light mode border */
+            border: 2px solid var(--border-color-light);
         }
 
         .social-links a:hover {
@@ -105,21 +108,64 @@
 
         .dark-mode {
             background: var(--bg-color-dark);
+            background: url('./image/xmas_4.jpg') no-repeat center center/cover;
             color: var(--text-color-dark);
         }
 
         .dark-mode .container {
             background-color: var(--card-bg-dark);
-            border-color: var(--border-color-dark); /* Dark mode border */
+            border-color: var(--border-color-dark);
         }
 
         .dark-mode .social-links a {
             color: var(--text-color-dark);
-            border-color: var(--border-color-dark); /* Dark mode border */
+            border-color: var(--border-color-dark);
+        }
+
+        /* Hiệu ứng tuyết rơi */
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .snowflake {
+            position: absolute;
+            color: white;
+            font-size: 2em;
+            user-select: none;
+            animation: snowflakes 10s linear infinite;
+        }
+
+        @keyframes snowflakes {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Thêm nhạc nền Giáng Sinh */
+        audio {
+            display: none;
         }
     </style>
 </head>
 <body>
+    <!-- Nhạc Giáng Sinh -->
+    <audio autoplay loop>
+        <source src="./sound/jing.mp3" type="audio/mp3">
+    </audio>
+    
+
+    <!-- Hiệu ứng Tuyết Rơi -->
+    <div class="snow" id="snow"></div>
+
     <div class="container">
         <img src="https://avatars.githubusercontent.com/u/95666213?v=4" alt="Avatar" class="avatar">
         <h1>@7devquyet</h1>
@@ -136,7 +182,6 @@
         </div>
 
         <div class="footer">
-        
         </div>
     </div>
 
@@ -153,6 +198,20 @@
                 : './image/moondark.png';
             modeSwitch.setAttribute('aria-label', isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode');
         });
+
+        // Tạo hiệu ứng tuyết rơi
+        const snow = document.getElementById('snow');
+        const numSnowflakes = 100;  // Số lượng bông tuyết
+
+        for (let i = 0; i < numSnowflakes; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerText = '❄';
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDuration = `${Math.random() * 3 + 7}s`;
+            snowflake.style.animationDelay = `${Math.random() * 5}s`;
+            snow.appendChild(snowflake);
+        }
     </script>
 </body>
 </html>
