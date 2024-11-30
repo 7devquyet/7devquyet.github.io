@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/95666213?v=4" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet" />
+    <title>@7devquyet</title>
+    <style>
+        :root {
+            
+            --bg-color-light: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+            --bg-color-dark: linear-gradient(135deg, #2b1055, #7597de);
+            --text-color-light: black;
+            --text-color-dark: white;
+            --card-bg-light: rgba(255, 255, 255, 0.8);
+            --card-bg-dark: rgba(0, 0, 0, 0.7);
+
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            transition: background 0.5s, color 0.5s;
+            background: var(--bg-color-light);
+            color: var(--text-color-light);
+        }
+
+        .container {
+            max-width: 400px;
+            background-color: var(--card-bg-light);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        .social-links a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-color-light);
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: #fffb7d;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .mode-switch {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 20px;
+            padding: 5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .mode-switch img {
+            width: 25px;
+            height: 25px;
+            transition: transform 0.3s;
+        }
+
+        .dark-mode {
+            background: var(--bg-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        .dark-mode .container {
+            background-color: var(--card-bg-dark);
+        }
+
+        .dark-mode .social-links a {
+            color: var(--text-color-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://avatars.githubusercontent.com/u/95666213?v=4" alt="Avatar" class="avatar">
+        <h1>@vuducquyet</h1>
+        
+        <button class="mode-switch" id="modeSwitch" aria-label="Switch Mode">
+            <img src="https://cdn-icons-png.flaticon.com/512/11579/11579720.png" alt="Toggle Mode" id="modeIcon">
+        </button>
+        
+        <div class="social-links">
+            <a href="https://www.facebook.com/7.dev.quyet" target="_blank">Facebook</a>
+            <a href="https://zalo.me/0947673127" target="_blank">Zalo</a>
+            <a href="https://github.com/7devquyet" target="_blank">Github</a>
+            <a href="https://www.linkedin.com/in/7devquyet/" target="_blank">LinkedIn</a>
+        </div>
+
+        <div class="footer">
+        
+        </div>
+    </div>
+
+    <script>
+        const modeSwitch = document.getElementById('modeSwitch');
+        const modeIcon = document.getElementById('modeIcon');
+        let isDarkMode = false;
+
+        modeSwitch.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            isDarkMode = !isDarkMode;
+            modeIcon.src = isDarkMode
+                ? './image/moon.png'
+                : './image/moondark.png';
+            modeSwitch.setAttribute('aria-label', isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+        });
+    </script>
+</body>
+</html>
